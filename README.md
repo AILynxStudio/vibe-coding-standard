@@ -75,6 +75,33 @@ AI 像是一个极其聪明但极度粗心的实习生。
 
 ---
 
+## 🧩 Skill 安装（推荐）
+
+将整个标准体系作为 Skill 安装到 AI 工具，实现一键加载：
+
+### 自动安装
+```bash
+# 克隆仓库
+git clone https://gitee.com/AILynx/vibe-coding-standard.git
+cd vibe-coding-standard/skill
+
+# Linux/macOS
+chmod +x install.sh
+./install.sh
+
+# Windows PowerShell
+.\install.ps1
+```
+
+### 手动安装
+- **Cursor**：复制 `skill/` 到 `~/.cursor/skills/vibe-coding`
+- **VSCode**：复制 `skill/` 到 `~/.vscode/skills/vibe-coding`
+- **桌面客户端**：复制 `resources/TK-4-desktop-prompt.md` 到系统提示词
+
+安装后，AI 工具会自动加载规范，无需手动复制文件。
+
+---
+
 ## 📂 仓库结构
 
 | 目录 | 内容 |
