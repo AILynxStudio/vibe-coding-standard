@@ -75,30 +75,46 @@ AI 像是一个极其聪明但极度粗心的实习生。
 
 ---
 
-## 🧩 Skill 安装（推荐）
+## 🧩 安装使用
 
-将整个标准体系作为 Skill 安装到 AI 工具，实现一键加载：
+### Claude Code（推荐：复制 CLAUDE.md 即可）
 
-### 自动安装
+Claude Code 每次打开项目会**自动加载**项目根目录的 `CLAUDE.md`，无需任何命令。
+
 ```bash
-# 克隆仓库
+# 方式1：直接复制 CLAUDE.md 到你的项目
+cp CLAUDE.md /你的项目目录/CLAUDE.md
+
+# 方式2：克隆仓库，把 CLAUDE.md 复制到任意项目
 git clone https://gitee.com/AILynx/vibe-coding-standard.git
-cd vibe-coding-standard/skill
-
-# Linux/macOS
-chmod +x install.sh
-./install.sh
-
-# Windows PowerShell
-.\install.ps1
+cp vibe-coding-standard/CLAUDE.md /你的项目目录/CLAUDE.md
 ```
 
-### 手动安装
-- **Cursor**：复制 `skill/` 到 `~/.cursor/skills/vibe-coding`
-- **VSCode**：复制 `skill/` 到 `~/.vscode/skills/vibe-coding`
-- **桌面客户端**：复制 `resources/TK-4-desktop-prompt.md` 到系统提示词
+复制后，用 Claude Code 打开项目，AI 就会自动遵循 Vibe Coding 标准。**不需要输入任何命令，不需要注册 Skill。**
 
-安装后，AI 工具会自动加载规范，无需手动复制文件。
+### Cursor
+```bash
+# 复制 CLAUDE.md 到项目根目录（Claude Code 用）
+cp CLAUDE.md /你的项目目录/CLAUDE.md
+# 复制 TK-1 内容到 .cursorrules（Cursor 专用）
+cp toolkits/TK-1-project-rules.md /你的项目目录/.cursorrules
+```
+
+### 桌面客户端
+复制 `toolkits/TK-4-desktop-prompt.md` 内容到系统提示词。
+
+### 自动安装脚本（可选）
+```bash
+git clone https://gitee.com/AILynx/vibe-coding-standard.git
+cd vibe-coding-standard
+
+# Linux/macOS
+chmod +x quick-install.sh && ./quick-install.sh
+
+# Windows PowerShell
+.\quick-install.ps1
+```
+脚本会自动检测已安装的 AI 工具并安装到对应位置。
 
 ---
 
@@ -117,8 +133,8 @@ chmod +x install.sh
 
 | 编号 | 名称 | 适用场景 | 给小白的一句话 |
 |:---:|------|----------|--------------|
-| TK-1 | 项目硬约束模板 | Cursor / VSCode | 给 AI 立规矩的文件 |
-| TK-2 | 通用流程 Skill | Cursor / VSCode / 桌面客户端 | 告诉 AI 先做什么后做什么 |
+| TK-1 | 项目硬约束模板 | Claude Code / Cursor / VSCode | 给 AI 立规矩的文件 |
+| TK-2 | 通用流程 Skill | Claude Code / Cursor / VSCode / 桌面客户端 | 告诉 AI 先做什么后做什么 |
 | TK-3 | 网页大模型提示词 | 浏览器版 AI 咨询 | 让 AI 只当顾问不写代码 |
 | TK-4 | 桌面客户端提示词 | 桌面版 AI 开发 | AI 的详细工作手册 |
 | TK-5 | 8 阶段 Task 模板 | 所有工程场景 | 你的项目进度表 |

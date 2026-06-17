@@ -15,12 +15,23 @@ if [ ! -d "$SKILL_DIR" ]; then
 fi
 
 # 检测已安装的AI工具
+CLAUDE_PATH="$HOME/.claude/skills"
 CURSOR_PATH="$HOME/.cursor/skills"
 VSCODE_PATH="$HOME/.vscode/skills"
 
 INSTALLED=false
 
-# 安装到Cursor
+# 安装到Claude Code（单文件方式）
+if [ -d "$HOME/.claude" ]; then
+    echo "📦 检测到Claude Code，正在安装..."
+    TARGET_DIR="$CLAUDE_PATH/vibe-coding"
+    mkdir -p "$TARGET_DIR"
+    cp "$SKILL_DIR/SKILL.md" "$TARGET_DIR/SKILL.md"
+    echo "✅ 已安装到Claude Code: $TARGET_DIR"
+    INSTALLED=true
+fi
+
+# 安装到Cursor（完整目录方式）
 if [ -d "$CURSOR_PATH" ]; then
     echo "📦 检测到Cursor，正在安装..."
     TARGET_DIR="$CURSOR_PATH/vibe-coding"
@@ -32,7 +43,7 @@ if [ -d "$CURSOR_PATH" ]; then
     INSTALLED=true
 fi
 
-# 安装到VSCode
+# 安装到VSCode（完整目录方式）
 if [ -d "$VSCODE_PATH" ]; then
     echo "📦 检测到VSCode，正在安装..."
     TARGET_DIR="$VSCODE_PATH/vibe-coding"
@@ -49,11 +60,16 @@ if [ "$INSTALLED" = true ]; then
     echo "🎉 安装完成！"
     echo ""
     echo "📖 使用方法："
-    echo "1. 打开Cursor或VSCode"
-    echo "2. 创建新项目目录"
-    echo "3. 输入 /vibe-coding 命令"
-    echo "4. 按AI引导完成项目开发"
+    echo ""
+    echo "【Claude Code】"
+    echo "  在任意项目目录输入 /vibe-coding 即可加载标准"
+    echo ""
+    echo "【Cursor / VSCode】"
+    echo "  1. 打开Cursor或VSCode"
+    echo "  2. 创建新项目目录"
+    echo "  3. 输入 /vibe-coding 命令"
+    echo "  4. 按AI引导完成项目开发"
 else
-    echo "❌ 未检测到Cursor或VSCode"
-    echo "请先安装Cursor或VSCode，然后再运行此脚本"
+    echo "❌ 未检测到Claude Code、Cursor或VSCode"
+    echo "请先安装AI工具，然后再运行此脚本"
 fi

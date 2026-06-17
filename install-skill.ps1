@@ -1,52 +1,71 @@
 # Vibe Coding SKILL 一键安装脚本
-# 使用方式：在任意文件夹执行 .\install-skill.ps1
+# 使用方式：在仓库目录执行 .\install-skill.ps1
 
 Write-Host "🚀 开始安装 Vibe Coding SKILL..." -ForegroundColor Cyan
 
-# 检测已安装的AI工具
-$cursorPath = "$env:USERPROFILE\.cursor\skills"
-$vscodePath = "$env:USERPROFILE\.vscode\skills"
+# 获取脚本所在目录
+$SCRIPT_DIR = Split-Path -Parent $MyInvocation.MyCommand.Path
+$SKILL_DIR = "$SCRIPT_DIR\skill"
 
-$targetPath = $null
-
-# 优先使用Cursor，其次VSCode
-if (Test-Path "$env:USERPROFILE\.cursor") {
-    $targetPath = "$cursorPath\vibe-coding"
-    Write-Host "📦 检测到Cursor，安装到: $targetPath" -ForegroundColor Yellow
-} elseif (Test-Path "$env:USERPROFILE\.vscode") {
-    $targetPath = "$vscodePath\vibe-coding"
-    Write-Host "📦 检测到VSCode，安装到: $targetPath" -ForegroundColor Yellow
-} else {
-    Write-Host "❌ 未检测到Cursor或VSCode，请先安装AI工具" -ForegroundColor Red
+# 检查skill目录是否存在
+if (-not (Test-Path $SKILL_DIR)) {
+    Write-Host "❌ 错误：找不到skill目录" -ForegroundColor Red
     exit 1
 }
 
-# 创建skills目录（如果不存在）
-$skillsDir = Split-Path -Parent $targetPath
-if (-not (Test-Path $skillsDir)) {
-    New-Item -ItemType Directory -Path $skillsDir -Force | Out-Null
-    Write-Host "📁 创建skills目录: $skillsDir" -ForegroundColor Green
+$installed = $false
+
+# 安装到Claude Code（单文件方式）
+$claudePath = "$env:USERPROFILE\.claude\skills\vibe-coding"
+if (Test-Path "$env:USERPROFILE\.claude") {
+    Write-Host "📦 检测到Claude Code，正在安装..." -ForegroundColor Yellow
+    if (-not (Test-Path $claudePath)) {
+        New-Item -ItemType Directory -Path $claudePath -Force | Out-Null
+    }
+    Copy-Item -Path "$SKILL_DIR\SKILL.md" -Destination "$claudePath\SKILL.md" -Force
+    Write-Host "✅ 已安装到Claude Code: $claudePath" -ForegroundColor Green
+    $installed = $true
 }
 
-# 如果已存在，先删除
-if (Test-Path $targetPath) {
-    Remove-Item -Recurse -Force $targetPath
-    Write-Host "🗑️  清理旧版本..." -ForegroundColor Yellow
+# 安装到Cursor（完整目录方式）
+$cursorPath = "$env:USERPROFILE\.cursor\skills\vibe-coding"
+if (Test-Path "$env:USERPROFILE\.cursor") {
+    Write-Host "📦 检测到Cursor，正在安装..." -ForegroundColor Yellow
+    if (Test-Path $cursorPath) {
+        Remove-Item -Recurse -Force $cursorPath
+    }
+    Copy-Item -Recurse -Path $SKILL_DIR -Destination $cursorPath
+    Write-Host "✅ 已安装到Cursor: $cursorPath" -ForegroundColor Green
+    $installed = $true
 }
 
-# 克隆仓库
-Write-Host "📥 正在下载SKILL..." -ForegroundColor Yellow
-git clone --depth 1 https://gitee.com/AILynx/vibe-coding-standard.git "$targetPath-temp"
+# 安装到VSCode（完整目录方式）
+$vscodePath = "$env:USERPROFILE\.vscode\skills\vibe-coding"
+if (Test-Path "$env:USERPROFILE\.vscode") {
+    Write-Host "📦 检测到VSCode，正在安装..." -ForegroundColor Yellow
+    if (Test-Path $vscodePath) {
+        Remove-Item -Recurse -Force $vscodePath
+    }
+    Copy-Item -Recurse -Path $SKILL_DIR -Destination $vscodePath
+    Write-Host "✅ 已安装到VSCode: $vscodePath" -ForegroundColor Green
+    $installed = $true
+}
 
-# 复制skill目录
-Copy-Item -Recurse -Path "$targetPath-temp\skill\*" -Destination $targetPath
-Remove-Item -Recurse -Force "$targetPath-temp"
-
-Write-Host ""
-Write-Host "🎉 安装完成！" -ForegroundColor Green
-Write-Host ""
-Write-Host "📖 使用方法：" -ForegroundColor Cyan
-Write-Host "1. 打开Cursor或VSCode"
-Write-Host "2. 创建新项目目录"
-Write-Host "3. 输入 /vibe-coding 命令"
-Write-Host "4. 按AI引导完成项目开发"
+if ($installed) {
+    Write-Host ""
+    Write-Host "🎉 安装完成！" -ForegroundColor Green
+    Write-Host ""
+    Write-Host "📖 使用方法：" -ForegroundColor Cyan
+    Write-Host ""
+    Write-Host "【Claude Code】" -ForegroundColor Yellow
+    Write-Host "  在任意项目目录输入 /vibe-coding 即可加载标准"
+    Write-Host ""
+    Write-Host "【Cursor / VSCode】" -ForegroundColor Yellow
+    Write-Host "  1. 打开Cursor或VSCode"
+    Write-Host "  2. 创建新项目目录"
+    Write-Host "  3. 输入 /vibe-coding 命令"
+    Write-Host "  4. 按AI引导完成项目开发"
+} else {
+    Write-Host "❌ 未检测到Claude Code、Cursor或VSCode" -ForegroundColor Red
+    Write-Host "请先安装AI工具，然后再运行此脚本"
+}
