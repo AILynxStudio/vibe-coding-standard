@@ -1,7 +1,13 @@
-# Vibe Coding 工业级开发标准
+---
+name: vibe-coding
+description: >
+  Use when starting a new software project, when the user wants to follow a structured
+  development process, or when the user mentions "Vibe Coding", "工业级开发", "8阶段流程",
+  or "铁律". This skill enforces a serial 8-stage workflow with human gate-checks at each
+  stage, 7 iron rules against AI bad habits, and incremental single-module coding.
+---
 
-> 本文件是 Claude Code 的项目级指令文件，每次对话自动加载。
-> 源码仓库：https://gitee.com/AILynx/vibe-coding-standard
+# Vibe Coding 工业级开发标准
 
 ## 核心理念
 
@@ -102,7 +108,7 @@ AI 像一个极其聪明但极度粗心的实习生。不给规矩，它会：
 
 ## 最佳实践
 
-1. **规则先行，代码后行**：先确认 CLAUDE.md 生效，再开始编码
+1. **规则先行，代码后行**：先确认规则生效，再开始编码
 2. **阶段确认，步步为营**：每阶段结束人工确认
 3. **增量编码，单模块验证**：每次只开发一个模块
 4. **错误反馈，精确描述**：把报错发给 AI，比描述问题更有效
@@ -111,38 +117,3 @@ AI 像一个极其聪明但极度粗心的实习生。不给规矩，它会：
 
 - **人类**：决策者、审核人、方向把控者
 - **AI**：执行者、编码者、测试辅助者、文档生成者
-
----
-
-## 详细参考（按需读取）
-
-以上是核心框架。以下文件包含详细执行指导，当需要深入了解时请读取：
-
-### 每阶段详细指导（含 AI 话术脚本）
-- `skill/stages/stage-1-requirement.md` — 阶段1：需求收敛详细引导
-- `skill/stages/stage-2-architecture.md` — 阶段2：架构锁档详细引导
-- `skill/stages/stage-3-alignment.md` — 阶段3：环境对齐详细引导
-- `skill/stages/stage-4-scaffold.md` — 阶段4：脚手架初始化详细引导
-- `skill/stages/stage-5-coding.md` — 阶段5：增量编码详细引导
-- `skill/stages/stage-6-testing.md` — 阶段6：全场景测试详细引导
-- `skill/stages/stage-7-refactor.md` — 阶段7：联调重构详细引导
-- `skill/stages/stage-8-delivery.md` — 阶段8：打包交付详细引导
-
-### 铁律执行机制
-- `skill/iron-rules/interception-rules.md` — 拦截规则清单（含恢复步骤）
-- `skill/iron-rules/rule-enforcement.md` — 铁律执行矩阵
-- `skill/iron-rules/audit-mechanism.md` — Git 审计与质量门禁
-
-### 场景适配
-- `skill/scenarios/scenario-1-ide.md` — Cursor/Windsurf/Trae 适配
-- `skill/scenarios/scenario-2-plugin.md` — VSCode + AI 插件适配
-- `skill/scenarios/scenario-3-desktop.md` — 桌面客户端适配
-
-### 工具包
-- `toolkits/TK-1-project-rules.md` — 项目硬约束模板
-- `toolkits/TK-2-workflow-skill.md` — 通用流程 Skill
-- `toolkits/TK-5-task-template.md` — 8 阶段任务跟踪模板
-
-### 实战案例
-- `skill/cases/case-00-guess-number.md` — 5 分钟入门案例
-- `skill/cases/case-01-v0-homepage.md` — v0 一键主页案例

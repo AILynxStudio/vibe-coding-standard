@@ -77,27 +77,32 @@ AI 像是一个极其聪明但极度粗心的实习生。
 
 ## 🧩 安装使用
 
-### Claude Code（推荐：复制 CLAUDE.md 即可）
+### Claude Code（推荐）
 
-Claude Code 每次打开项目会**自动加载**项目根目录的 `CLAUDE.md`，无需任何命令。
+把 `.claude/skills/vibe-coding/` 目录复制到你的项目根目录：
 
 ```bash
-# 方式1：直接复制 CLAUDE.md 到你的项目
-cp CLAUDE.md /你的项目目录/CLAUDE.md
-
-# 方式2：克隆仓库，把 CLAUDE.md 复制到任意项目
+# 克隆仓库
 git clone https://gitee.com/AILynx/vibe-coding-standard.git
+
+# 复制 skill 到你的项目
+cp -r vibe-coding-standard/.claude/skills/vibe-coding /你的项目目录/.claude/skills/vibe-coding
+```
+
+安装后，Claude Code 会自动识别这个 skill。当你开始新项目或提到"Vibe Coding"时，AI 会自动按 8 阶段流程工作。
+
+同时建议复制 `CLAUDE.md` 到项目根目录（双保险）：
+```bash
 cp vibe-coding-standard/CLAUDE.md /你的项目目录/CLAUDE.md
 ```
 
-复制后，用 Claude Code 打开项目，AI 就会自动遵循 Vibe Coding 标准。**不需要输入任何命令，不需要注册 Skill。**
-
 ### Cursor
 ```bash
-# 复制 CLAUDE.md 到项目根目录（Claude Code 用）
-cp CLAUDE.md /你的项目目录/CLAUDE.md
-# 复制 TK-1 内容到 .cursorrules（Cursor 专用）
-cp toolkits/TK-1-project-rules.md /你的项目目录/.cursorrules
+# 复制 skill 目录
+cp -r vibe-coding-standard/skill/ ~/.cursor/skills/vibe-coding
+
+# 复制项目硬约束
+cp vibe-coding-standard/toolkits/TK-1-project-rules.md /你的项目目录/.cursorrules
 ```
 
 ### 桌面客户端
@@ -114,7 +119,6 @@ chmod +x quick-install.sh && ./quick-install.sh
 # Windows PowerShell
 .\quick-install.ps1
 ```
-脚本会自动检测已安装的 AI 工具并安装到对应位置。
 
 ---
 
