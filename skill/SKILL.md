@@ -4,19 +4,14 @@
 
 这是一套深度融入Vibe Coding标准体系的智能引导式SKILL，通过AI主动提问、场景自动检测、8阶段流程引导，帮助用户完成项目开发。
 
-## 一键安装
+## 安装方式
 
-**Windows (PowerShell):**
-```powershell
-irm https://gitee.com/AILynx/vibe-coding-standard/raw/master/install-skill.ps1 | iex
-```
-
-**Mac/Linux:**
+在项目目录中执行：
 ```bash
-curl -fsSL https://gitee.com/AILynx/vibe-coding-standard/raw/master/install-skill.sh | bash
+git clone https://gitee.com/AILynx/vibe-coding-standard.git skill
 ```
 
-安装完成后，打开Cursor或VSCode，输入 `/vibe-coding` 即可使用。
+安装完成后，输入 `/vibe-coding` 即可使用。
 
 ## 核心特性
 
