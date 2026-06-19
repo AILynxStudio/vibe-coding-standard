@@ -79,19 +79,30 @@ AI 像是一个极其聪明但极度粗心的实习生。
 
 ### Claude Code（推荐）
 
-在你的项目目录下执行一条命令：
+**方式1：直接下载 SKILL.md（推荐，最轻量）**
 
 ```bash
-cd /你的项目目录
-git clone https://gitee.com/AILynx/vibe-coding-standard.git .claude/skills/vibe-coding
+# 创建目录并下载 SKILL.md
+mkdir -p .claude/skills/vibe-coding
+curl -o .claude/skills/vibe-coding/SKILL.md https://gitee.com/AILynx/vibe-coding-standard/raw/master/.claude/skills/vibe-coding/SKILL.md
 ```
 
-Claude Code 会自动识别这个 skill。当你开始新项目或提到"Vibe Coding"时，AI 会自动按 8 阶段流程工作。
+**方式2：下载 CLAUDE.md 到项目根目录（自动加载，无需命令）**
 
-同时建议复制 `CLAUDE.md` 到项目根目录（双保险）：
 ```bash
-cp .claude/skills/vibe-coding/CLAUDE.md ./CLAUDE.md
+curl -o CLAUDE.md https://gitee.com/AILynx/vibe-coding-standard/raw/master/CLAUDE.md
 ```
+
+**方式3：克隆仓库，手动复制（完整参考）**
+
+```bash
+git clone https://gitee.com/AILynx/vibe-coding-standard.git
+mkdir -p /你的项目/.claude/skills/vibe-coding
+cp vibe-coding-standard/.claude/skills/vibe-coding/SKILL.md /你的项目/.claude/skills/vibe-coding/
+cp vibe-coding-standard/CLAUDE.md /你的项目/
+```
+
+> ⚠️ 不要把整个仓库克隆到 `.claude/skills/`，否则上下文会爆炸。
 
 ### Cursor
 ```bash
