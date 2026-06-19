@@ -79,32 +79,14 @@ AI 像是一个极其聪明但极度粗心的实习生。
 
 ### Claude Code（推荐）
 
+在你的项目目录下执行一条命令：
+
 ```bash
-# 克隆到临时目录
-git clone https://gitee.com/AILynx/vibe-coding-standard.git /tmp/vibe-coding-standard
-
-# 复制 skill 到你的项目
-cp -r /tmp/vibe-coding-standard/.claude/skills/vibe-coding /你的项目/.claude/skills/vibe-coding
-
-# 复制 CLAUDE.md 到项目根目录（双保险）
-cp /tmp/vibe-coding-standard/CLAUDE.md /你的项目/
-
-# 清理
-rm -rf /tmp/vibe-coding-standard
+cd /你的项目目录
+git clone https://gitee.com/AILynx/vibe-coding-standard.git .claude/skills/vibe-coding
 ```
 
-安装后结构：
-```
-你的项目/
-├── CLAUDE.md                              ← 自动加载
-└── .claude/skills/vibe-coding/
-    ├── SKILL.md                           ← 入口（6KB，精简）
-    └── references/                        ← 按需读取（不一次性加载）
-        ├── stage-1-requirement.md
-        ├── stage-2-architecture.md
-        ├── ...
-        └── best-practices.md
-```
+完事。Claude Code 会自动识别这个 skill。
 
 ### Cursor
 ```bash
