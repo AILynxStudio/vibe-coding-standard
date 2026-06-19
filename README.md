@@ -79,30 +79,32 @@ AI 像是一个极其聪明但极度粗心的实习生。
 
 ### Claude Code（推荐）
 
-**方式1：直接下载 SKILL.md（推荐，最轻量）**
-
 ```bash
-# 创建目录并下载 SKILL.md
-mkdir -p .claude/skills/vibe-coding
-curl -o .claude/skills/vibe-coding/SKILL.md https://gitee.com/AILynx/vibe-coding-standard/raw/master/.claude/skills/vibe-coding/SKILL.md
+# 克隆到临时目录
+git clone https://gitee.com/AILynx/vibe-coding-standard.git /tmp/vibe-coding-standard
+
+# 复制 skill 到你的项目
+cp -r /tmp/vibe-coding-standard/.claude/skills/vibe-coding /你的项目/.claude/skills/vibe-coding
+
+# 复制 CLAUDE.md 到项目根目录（双保险）
+cp /tmp/vibe-coding-standard/CLAUDE.md /你的项目/
+
+# 清理
+rm -rf /tmp/vibe-coding-standard
 ```
 
-**方式2：下载 CLAUDE.md 到项目根目录（自动加载，无需命令）**
-
-```bash
-curl -o CLAUDE.md https://gitee.com/AILynx/vibe-coding-standard/raw/master/CLAUDE.md
+安装后结构：
 ```
-
-**方式3：克隆仓库，手动复制（完整参考）**
-
-```bash
-git clone https://gitee.com/AILynx/vibe-coding-standard.git
-mkdir -p /你的项目/.claude/skills/vibe-coding
-cp vibe-coding-standard/.claude/skills/vibe-coding/SKILL.md /你的项目/.claude/skills/vibe-coding/
-cp vibe-coding-standard/CLAUDE.md /你的项目/
+你的项目/
+├── CLAUDE.md                              ← 自动加载
+└── .claude/skills/vibe-coding/
+    ├── SKILL.md                           ← 入口（6KB，精简）
+    └── references/                        ← 按需读取（不一次性加载）
+        ├── stage-1-requirement.md
+        ├── stage-2-architecture.md
+        ├── ...
+        └── best-practices.md
 ```
-
-> ⚠️ 不要把整个仓库克隆到 `.claude/skills/`，否则上下文会爆炸。
 
 ### Cursor
 ```bash

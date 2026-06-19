@@ -117,3 +117,21 @@ AI 像一个极其聪明但极度粗心的实习生。不给规矩，它会：
 
 - **人类**：决策者、审核人、方向把控者
 - **AI**：执行者、编码者、测试辅助者、文档生成者
+
+---
+
+## References Index
+
+| File | Content | When to read |
+|------|---------|--------------|
+| [references/stage-1-requirement.md](references/stage-1-requirement.md) | 阶段1详细引导、AI话术脚本、需求模板 | 执行阶段1时 |
+| [references/stage-2-architecture.md](references/stage-2-architecture.md) | 阶段2详细引导、架构模板、锁档流程 | 执行阶段2时 |
+| [references/stage-3-alignment.md](references/stage-3-alignment.md) | 阶段3详细引导、环境检查清单 | 执行阶段3时 |
+| [references/stage-4-scaffold.md](references/stage-4-scaffold.md) | 阶段4详细引导、初始化命令、验证清单 | 执行阶段4时 |
+| [references/stage-5-coding.md](references/stage-5-coding.md) | 阶段5详细引导、模块拆分策略、编码节奏 | 执行阶段5时 |
+| [references/stage-6-testing.md](references/stage-6-testing.md) | 阶段6详细引导、测试清单、覆盖率要求 | 执行阶段6时 |
+| [references/stage-7-refactor.md](references/stage-7-refactor.md) | 阶段7详细引导、重构策略、代码风格统一 | 执行阶段7时 |
+| [references/stage-8-delivery.md](references/stage-8-delivery.md) | 阶段8详细引导、打包流程、README模板 | 执行阶段8时 |
+| [references/iron-rules.md](references/iron-rules.md) | 7条铁律详细执行机制、拦截条件、恢复步骤 | 检查铁律执行时 |
+| [references/common-pitfalls.md](references/common-pitfalls.md) | 10个常见陷阱详细分析、深层原因、预防措施 | 遇到问题时 |
+| [references/best-practices.md](references/best-practices.md) | 5条最佳实践详细指导、阶段实践要点 | 需要指导时 |
