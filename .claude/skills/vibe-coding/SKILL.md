@@ -5,6 +5,8 @@ description: >
   development process, or when the user mentions "Vibe Coding", "工业级开发", "8阶段流程",
   or "铁律". This skill enforces a serial 8-stage workflow with human gate-checks at each
   stage, 7 iron rules against AI bad habits, and incremental single-module coding.
+user-invocable: true
+argument-hint: "[start|status|stage]"
 ---
 
 # Vibe Coding 工业级开发标准
